@@ -16,6 +16,7 @@ echo "=== Iniciando o caso no diretório: $caseDir ==="
 
 # Etapa 1: Limpeza de dados anteriores
 echo "=== Limpando arquivos antigos ==="
+mv 0 0.old
 rm -rf [0-9]* constant/polyMesh core log.* processor* postProcessing
 rm -f $logDir/*
 

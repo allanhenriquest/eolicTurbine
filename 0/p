@@ -1,0 +1,42 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v12                                   |
+|   \\  /    A nd           | Web:      www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+
+FoamFile
+{
+    version     2.0;            // Versão do arquivo OpenFOAM
+    format      ascii;          // Formato do arquivo: ascii ou binary
+    class       volScalarField; // Tipo do campo: escalar volumétrico
+    location    "0.org";            // Localização relativa ao diretório
+    object      p;              // Nome do campo (deve coincidir com o arquivo)
+}
+
+// ************************************************************************* //
+
+dimensions      [0 2 -2 0 0 0 0]; // Dimensões da pressão: kg/(m.s²)
+internalField   uniform 0;         // Valor inicial uniforme no domínio
+
+boundaryField
+{
+    inlet
+    {
+        type fixedValue;          // Condição de pressão fixa na entrada
+        value uniform 0;
+    }
+    outlet
+    {
+        type zeroGradient;        // Gradiente zero na saída
+    }
+    walls
+    {
+        type zeroGradient;        // Gradiente zero nas paredes
+    }
+    rotorPatch
+    {
+        type zeroGradient;        // Gradiente zero no rotor
+    }
+}

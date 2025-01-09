@@ -1,0 +1,41 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v12                                   |
+|   \\  /    A nd           | Web:      www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+
+FoamFile
+{
+    version     2.0;            // Versão do arquivo OpenFOAM
+    format      ascii;          // Formato do arquivo: ascii ou binary
+    class       volVectorField; // Tipo do campo: escalar volumétrico
+    location    "0.org";            // Localização relativa ao diretório
+    object      epsilon;              // Nome do campo (deve coincidir com o arquivo)
+}
+
+dimensions      [0 2 -3 0 0 0 0]; // Unidade: m²/s³ (para \( \epsilon \))
+internalField   uniform 0.01;     // Valor inicial
+boundaryField
+{
+    inlet
+    {
+        type fixedValue;          // Valor fixo na entrada
+        value uniform 0.01;
+    }
+    outlet
+    {
+        type zeroGradient;        // Gradiente zero
+    }
+    walls
+    {
+        type epsilonWallFunction; // Função de parede para \( \epsilon \)
+        value uniform 0.0;
+    }
+    rotorPatch
+    {
+        type epsilonWallFunction; // Função de parede no rotor
+        value uniform 0.0;
+    }
+}

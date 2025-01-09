@@ -1,0 +1,35 @@
+/*---------------------------------------------------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  12
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+Build  : 12-6aa359dae696
+Exec   : blockMesh
+Date   : Jan 09 2025
+Time   : 15:12:36
+Host   : "DESKTOP-POUARR7"
+PID    : 59836
+I/O    : uncollated
+Case   : /home/allanhenriquest/openfoamcases/eolicturbine
+nProcs : 1
+sigFpe : Enabling floating point exception trapping (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 10)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+
+
+--> FOAM FATAL IO ERROR: 
+"ill defined primitiveEntry starting at keyword 'libs(' on line 13 and ending at line 42"
+
+file: /home/allanhenriquest/openfoamcases/eolicturbine/system/forces at line 42.
+
+    From function void Foam::primitiveEntry::readEntry(const Foam::dictionary&, Foam::Istream&)
+    in file db/dictionary/primitiveEntry/primitiveEntryIO.C at line 168.
+
+FOAM exiting
+

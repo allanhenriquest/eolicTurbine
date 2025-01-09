@@ -1,0 +1,28 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  12
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    format      ascii;
+    class       dictionary;
+    object      decomposeParDict;
+}
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+numberOfSubdomains 4;  /* Número de Processadores */ 
+
+method          hierarchical;
+
+hierarchicalCoeffs
+{
+    n               (2 2 1);   /* Multiplicação deve ser igual ao número de processadores */
+    order           xyz;
+}
+
+
+/*************************************************************************/

@@ -1,0 +1,42 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v12                                   |
+|   \\  /    A nd           | Web:      www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      dynamicMeshDict;
+}
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+dynamicFvMesh dynamicMotionSolverFvMesh;
+
+motionSolverLibs ("libsixDoFRigidBodyMotion.so");
+
+solver sixDoFRigidBodyMotion;
+
+sixDoFRigidBodyMotionCoeffs
+{
+    patches ("rotorPatch"); // Patch onde o movimento é aplicado
+    innerDistance 0.1;      // Raio interno para calcular forças
+    outerDistance 1.0;      // Raio externo para calcular forças
+    
+    mass 5.0;               // Massa da hélice
+    centreOfMass (0 0 0);   // Centro de massa
+    inertia (1 1 1);        // Tensor de inércia da hélice (kg.m²)
+    
+    orientation (1 0 0 0);  // Quatérnio inicial (orientação)
+    
+    externalTorque (0 0 0); // Inicialmente sem torque externo
+    externalForce (0 0 0);  // Inicialmente sem força externa
+
+    report on;              // Imprime dados do movimento no terminal
+}
+
+/*************************************************************************/

@@ -1,0 +1,39 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  12
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      controlDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+application     pimpleDyMFoam;
+
+startFrom       startTime;
+startTime       0;
+stopAt          endTime;
+endTime         5;          // Tempo final da simulação (s)
+deltaT          0.001;      // Passo de tempo (s)
+
+writeControl    timeStep;   // Salvar a cada passo de tempo
+writeInterval   100;        // Intervalo de gravação
+purgeWrite      2;          // Limita a quantidade de dados gravados
+writeFormat     ascii;      // Formato de saída
+writePrecision  6;          // Precisão de saída
+writeCompression off;
+
+adjustTimeStep  no;
+maxCo           1;          // Número de Courant máximo
+maxDeltaT       0.01;       // Passo máximo permitido
+
+functions       ();
+
+
+// ************************************************************************* //

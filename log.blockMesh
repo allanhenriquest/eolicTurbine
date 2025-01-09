@@ -1,0 +1,81 @@
+/*---------------------------------------------------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  12
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+Build  : 12-6aa359dae696
+Exec   : blockMesh
+Date   : Jan 09 2025
+Time   : 16:31:06
+Host   : "DESKTOP-POUARR7"
+PID    : 84644
+I/O    : uncollated
+Case   : /home/allanhenriquest/openfoamcases/eolicTurbine/eolicTurbine
+nProcs : 1
+sigFpe : Enabling floating point exception trapping (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 10)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+--> FOAM Warning : 
+    From function Foam::functionObjectList::functionObjectList(const Foam::Time&, bool)
+    in file db/functionObjects/functionObjectList/functionObjectList.C at line 253
+    Both "system/functions" and "system/controlDict/functions" found, the latter will be ignored.
+Deleting polyMesh directory
+    "/home/allanhenriquest/openfoamcases/eolicTurbine/eolicTurbine/constant/polyMesh"
+Reading "blockMeshDict"
+
+Creating block mesh from
+    "system/blockMeshDict"
+Creating block edges
+No non-planar block faces defined
+Creating topology blocks
+Creating topology patches
+
+Creating block mesh topology
+
+Check topology
+
+	Basic statistics
+		Number of internal faces : 0
+		Number of boundary faces : 6
+		Number of defined boundary faces : 6
+		Number of undefined boundary faces : 0
+	Checking patch -> block consistency
+
+Creating block offsets
+Creating merge list .
+
+Creating polyMesh from blockMesh
+Creating patches
+Creating cells
+Creating points with scale 1
+    Block 0 cell size :
+        i : 0.0833333 .. 0.0833333
+        j : 0.055 .. 0.055
+        k : 0.0833333
+
+No patch pairs to merge
+
+Writing polyMesh
+----------------
+Mesh Information
+----------------
+  boundingBox: (-0.5 -0.6 -0.5) (0.5 0.5 0.5)
+  nPoints: 3549
+  nCells: 2880
+  nFaces: 9264
+  nInternalFaces: 8016
+----------------
+Patches
+----------------
+  patch 0 (start: 8016 size: 960) name: walls
+  patch 1 (start: 8976 size: 144) name: inlet
+  patch 2 (start: 9120 size: 144) name: outlet
+
+End
+

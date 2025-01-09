@@ -1,0 +1,46 @@
+/*---------------------------------------------------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  12
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+Build  : 12-6aa359dae696
+Exec   : splitBaffles -parallel -overwrite
+Date   : Jan 09 2025
+Time   : 16:31:51
+Host   : "DESKTOP-POUARR7"
+PID    : 84906
+I/O    : uncollated
+Case   : /home/allanhenriquest/openfoamcases/eolicTurbine/eolicTurbine
+nProcs : 4
+Slaves : 
+3
+(
+"DESKTOP-POUARR7.84907"
+"DESKTOP-POUARR7.84908"
+"DESKTOP-POUARR7.84909"
+)
+
+Pstream initialised with:
+    floatTransfer      : false
+    nProcsSimpleSum    : 0
+    commsType          : nonBlocking
+    polling iterations : 0
+sigFpe : Enabling floating point exception trapping (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 10)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+--> FOAM Warning : 
+    From function Foam::functionObjectList::functionObjectList(const Foam::Time&, bool)
+    in file db/functionObjects/functionObjectList/functionObjectList.C at line 253
+    Both "system/functions" and "system/controlDict/functions" found, the latter will be ignored.
+Create mesh for time = 0
+
+Writing mesh to time 0
+End
+
+Finalising parallel run

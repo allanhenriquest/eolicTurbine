@@ -1,0 +1,102 @@
+/*---------------------------------------------------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  12
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+Build  : 12-6aa359dae696
+Exec   : decomposePar -noFields
+Date   : Jan 09 2025
+Time   : 16:31:08
+Host   : "DESKTOP-POUARR7"
+PID    : 84675
+I/O    : uncollated
+Case   : /home/allanhenriquest/openfoamcases/eolicTurbine/eolicTurbine
+nProcs : 1
+sigFpe : Enabling floating point exception trapping (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 10)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Skipping decomposing fields
+
+Create time
+
+--> FOAM Warning : 
+    From function Foam::functionObjectList::functionObjectList(const Foam::Time&, bool)
+    in file db/functionObjects/functionObjectList/functionObjectList.C at line 253
+    Both "system/functions" and "system/controlDict/functions" found, the latter will be ignored.
+--> FOAM Warning : 
+    From function Foam::functionObjectList::functionObjectList(const Foam::Time&, bool)
+    in file db/functionObjects/functionObjectList/functionObjectList.C at line 253
+    Both "system/functions" and "system/controlDict/functions" found, the latter will be ignored.
+--> FOAM Warning : 
+    From function Foam::functionObjectList::functionObjectList(const Foam::Time&, bool)
+    in file db/functionObjects/functionObjectList/functionObjectList.C at line 253
+    Both "system/functions" and "system/controlDict/functions" found, the latter will be ignored.
+--> FOAM Warning : 
+    From function Foam::functionObjectList::functionObjectList(const Foam::Time&, bool)
+    in file db/functionObjects/functionObjectList/functionObjectList.C at line 253
+    Both "system/functions" and "system/controlDict/functions" found, the latter will be ignored.
+--> FOAM Warning : 
+    From function Foam::functionObjectList::functionObjectList(const Foam::Time&, bool)
+    in file db/functionObjects/functionObjectList/functionObjectList.C at line 253
+    Both "system/functions" and "system/controlDict/functions" found, the latter will be ignored.
+Calculating distribution of cells
+
+Selecting decomposer hierarchical
+
+Finished decomposition in 0.00113 s
+
+Calculating original mesh data
+
+Distributing cells to processors
+
+Distributing faces to processors
+
+Distributing points to processors
+
+Constructing processor meshes
+
+Processor 0
+    Number of cells = 720
+    Number of faces shared with processor 1 = 120
+    Number of faces shared with processor 2 = 72
+    Number of processor patches = 2
+    Number of processor faces = 192
+    Number of boundary faces = 312
+
+Processor 1
+    Number of cells = 720
+    Number of faces shared with processor 0 = 120
+    Number of faces shared with processor 3 = 72
+    Number of processor patches = 2
+    Number of processor faces = 192
+    Number of boundary faces = 312
+
+Processor 2
+    Number of cells = 720
+    Number of faces shared with processor 0 = 72
+    Number of faces shared with processor 3 = 120
+    Number of processor patches = 2
+    Number of processor faces = 192
+    Number of boundary faces = 312
+
+Processor 3
+    Number of cells = 720
+    Number of faces shared with processor 1 = 72
+    Number of faces shared with processor 2 = 120
+    Number of processor patches = 2
+    Number of processor faces = 192
+    Number of boundary faces = 312
+
+Number of processor faces = 384
+Max number of cells = 720 (0% above average 720)
+Max number of processor patches = 2 (0% above average 2)
+Max number of faces between processors = 192 (0% above average 192)
+
+Time = 0s
+
+End
+

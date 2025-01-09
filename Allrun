@@ -15,26 +15,22 @@ mkdir -p $logDir       # Cria o diretório de logs, se não existir
 echo "=== Iniciando o caso no diretório: $caseDir ==="
 
 # Etapa 1: Limpeza de dados anteriores
-echo "=== Limpando arquivos antigos ==="
-mv 0 0.old
-rm -rf [0-9]* constant/polyMesh core log.* processor* postProcessing
-rm -f $logDir/*
 
 # Etapa 2: Criando a malha base com blockMesh
-echo "=== Criando malha base com blockMesh ==="
-blockMesh > $logDir/blockMesh.log 2>&1
-if [ $? -ne 0 ]; then
-    echo "Erro durante o blockMesh. Consulte $logDir/blockMesh.log"
-    exit 1
-fi
+# echo "=== Criando malha base com blockMesh ==="
+# blockMesh > $logDir/blockMesh.log 2>&1
+# if [ $? -ne 0 ]; then
+#     echo "Erro durante o blockMesh. Consulte $logDir/blockMesh.log"
+#     exit 1
+# fi
 
-# Etapa 3: Refinamento da malha com snappyHexMesh
-echo "=== Refinando malha com snappyHexMesh ==="
-snappyHexMesh -overwrite > $logDir/snappyHexMesh.log 2>&1
-if [ $? -ne 0 ]; then
-    echo "Erro durante o snappyHexMesh. Consulte $logDir/snappyHexMesh.log"
-    exit 1
-fi
+# # Etapa 3: Refinamento da malha com snappyHexMesh
+# echo "=== Refinando malha com snappyHexMesh ==="
+# snappyHexMesh -overwrite > $logDir/snappyHexMesh.log 2>&1
+# if [ $? -ne 0 ]; then
+#     echo "Erro durante o snappyHexMesh. Consulte $logDir/snappyHexMesh.log"
+#     exit 1
+# fi
 
 # Etapa 4: Checando a qualidade da malha
 echo "=== Verificando qualidade da malha ==="
@@ -56,9 +52,9 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
-# Etapa 7: Pós-processamento (opcional)
-echo "=== Iniciando pós-processamento ==="
-postProcess -func forces > $logDir/forces.log 2>&1
+# # Etapa 7: Pós-processamento (opcional)
+# echo "=== Iniciando pós-processamento ==="
+# postProcess -func forces > $logDir/forces.log 2>&1
 
 # Finalização
 echo "=== Caso concluído com sucesso! Consulte o diretório $logDir para logs. ==="

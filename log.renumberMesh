@@ -1,0 +1,67 @@
+/*---------------------------------------------------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  12
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+Build  : 12-6aa359dae696
+Exec   : renumberMesh -parallel -noFields -overwrite
+Date   : Jan 09 2025
+Time   : 16:31:52
+Host   : "DESKTOP-POUARR7"
+PID    : 84946
+I/O    : uncollated
+Case   : /home/allanhenriquest/openfoamcases/eolicTurbine/eolicTurbine
+nProcs : 4
+Slaves : 
+3
+(
+"DESKTOP-POUARR7.84947"
+"DESKTOP-POUARR7.84948"
+"DESKTOP-POUARR7.84949"
+)
+
+Pstream initialised with:
+    floatTransfer      : false
+    nProcsSimpleSum    : 0
+    commsType          : nonBlocking
+    polling iterations : 0
+sigFpe : Enabling floating point exception trapping (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 10)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+--> FOAM Warning : 
+    From function Foam::functionObjectList::functionObjectList(const Foam::Time&, bool)
+    in file db/functionObjects/functionObjectList/functionObjectList.C at line 253
+    Both "system/functions" and "system/controlDict/functions" found, the latter will be ignored.
+--> FOAM Warning : 
+    From function static Foam::instantList Foam::timeSelector::select0(Foam::Time&, const Foam::argList&)
+    in file db/Time/timeSelector.C at line 269
+    No time specified or available, selecting 'constant'
+Create mesh for time = constant
+
+Mesh size: 39749
+Before renumbering :
+    band           : 10596
+    profile        : 1.02721e+08
+
+Using default renumberMethod.
+
+Selecting renumberMethod CuthillMcKee
+
+
+After renumbering :
+    band           : 952
+    profile        : 2.16698e+07
+
+Writing mesh to "constant"
+
+Renumbering faceSets:
+    wrongFaces
+End
+
+Finalising parallel run

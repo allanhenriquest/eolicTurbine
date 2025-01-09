@@ -1,0 +1,61 @@
+/*---------------------------------------------------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  12
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+Build  : 12-6aa359dae696
+Exec   : snappyHexMesh -overwrite
+Date   : Jan 09 2025
+Time   : 16:14:09
+Host   : "DESKTOP-POUARR7"
+PID    : 81084
+I/O    : uncollated
+Case   : /home/allanhenriquest/openfoamcases/eolicTurbine/eolicTurbine
+nProcs : 1
+sigFpe : Enabling floating point exception trapping (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 10)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+--> FOAM Warning : 
+    From function Foam::functionObjectList::functionObjectList(const Foam::Time&, bool)
+    in file db/functionObjects/functionObjectList/functionObjectList.C at line 253
+    Both "system/functions" and "system/controlDict/functions" found, the latter will be ignored.
+Create mesh for time = 0
+
+Read mesh in = 0.011784 s
+Reading "snappyHexMeshDict"
+
+
+Overall mesh bounding box  : (-0.5 -0.6 -0.5) (0.5 0.5 0.5)
+Relative tolerance         : 1e-06
+Absolute matching distance : 1.79165e-06
+
+Reading refinement surfaces...
+Read refinement surfaces in = 0.174697 s
+
+Reading refinement regions...
+--> FOAM Warning : 
+    From function Foam::refinementRegions::refinementRegions(const Foam::searchableSurfaces&, const Foam::dictionary&)
+    in file refinementRegions/refinementRegions.C at line 627
+    Reading "/home/allanhenriquest/openfoamcases/eolicTurbine/eolicTurbine/system/snappyHexMeshDict/castellatedMeshControls/refinementRegions" from line 143 to line 144
+    Not all entries in refinementRegions dictionary were used. The following entries were not used : 1(rotorPatch)
+Read refinement regions in = 0.001517 s
+
+Reading features...
+
+
+--> FOAM FATAL IO ERROR: 
+Could not open "/home/allanhenriquest/openfoamcases/eolicTurbine/eolicTurbine/constant/triSurface/helice3.eMesh"
+
+file: /home/allanhenriquest/openfoamcases/eolicTurbine/eolicTurbine/system/snappyHexMeshDict/castellatedMeshControls/features from line 94 to line 95.
+
+    From function void Foam::refinementFeatures::read(const Foam::objectRegistry&, const Foam::PtrList<Foam::dictionary>&)
+    in file refinementFeatures/refinementFeatures.C at line 95.
+
+FOAM exiting
+

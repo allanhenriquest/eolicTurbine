@@ -14,32 +14,21 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-4
+2
 (
-    inlet
-    {
-        type            patch;
-        nFaces          5000;
-        startFace       737500;
-    }
-    outlet
-    {
-        type            patch;
-        nFaces          5000;
-        startFace       742500;
-    }
-    ground
+    innerCylinder
     {
         type            wall;
         inGroups        List<word> 1(wall);
-        nFaces          2500;
-        startFace       747500;
+        nFaces          105758;
+        startFace       1750849;
     }
-    openSides
+    outerCylinder
     {
-        type            pressureInletOutletVelocity;
-        nFaces          12500;
-        startFace       750000;
+        type            wall;
+        inGroups        List<word> 1(wall);
+        nFaces          63940;
+        startFace       1856607;
     }
 )
 

@@ -27,53 +27,25 @@ addLayers       false;
 // - to 'snap' the mesh boundary to the surface
 geometry
 {
-    // innerCylinder
-    // {
-    //     type        triSurfaceMesh;
-    //     file        "AMI_c.stl";
-    //     regions
-    //     {
-    //         innerCylinder
-    //         {
-    //              name       innerCylinder;
-    //         }
-    //     }
-    // }
-    // middleCylinder
-    // {
-    //     type        triSurfaceMesh;
-    //     file        "AMI_c.stl";
-    //     regions
-    //     {
-    //         middleCylinder
-    //         {
-    //              name       middleCylinder;
-    //         }
-    //     }
-    // }
-    AMI_c
+    innerCylinder
     {
         type        triSurfaceMesh;
-        file        "AMI_c.stl";
-        regions
-        {
-            AMI_c
-            {
-                 name       AMI_c;
-            }
-        }
+        file        "innerCylinder.stl";
+    }
+    refinementCylinder
+    {
+        type        triSurfaceMesh;
+        file        "refinementCylinder.stl";        
+    }
+    outerCylinder
+    {
+        type        triSurfaceMesh;
+        file        "outerCylinder.stl";        
     }
     helice3
     {
         type        triSurfaceMesh;
         file        "helice3.stl";
-        regions
-        {
-           helice3 
-           {
-                name    helice3;
-           }
-        }
     }
     
 }
@@ -126,10 +98,20 @@ castellatedMeshControls
     features
     (
         {
-            file        "AMI_c.eMesh";
-            level       4;
+            file        "outerCylinder.eMesh";
+            level      1;
+        }
+
+        {
+            file        "innerCylinder.eMesh";
+            level      2;
         }
         
+        {
+            file        "refinementCylinder.eMesh";
+            level       3;
+        }
+
         {
             file        "helice3.eMesh";
             level       4;
@@ -149,30 +131,32 @@ castellatedMeshControls
 
     refinementSurfaces
     {
-        // innerCylinder
-        // {
-        //     level       (4 4);
-        //     cellZone    innerCylinder;
-        //     faceZone    innerCylinder;
-        //     mode        inside;
-        // }
-        AMI_c
+        
+        outerCylinder
+        {
+            level       (1 1);            
+        }
+        
+        innerCylinder
+        {
+            level       (2 2); 
+        }
+        
+        
+        refinementCylinder
         {
             level       (4 4);
-            cellZone    AMI_c;
-            faceZone    AMI_c;
+            cellZone    refinementCylinder;
+            faceZone    refinementCylinder;
             mode        inside;
         }
+        
+
+
         helice3
         {
             level       (4 4);
-            regions
-            {
-                helice3
-                {
-                    level (4 5);
-                }
-            }
+            
         }
     }
 
@@ -195,16 +179,18 @@ castellatedMeshControls
 
     refinementRegions
     {
-        // innerCylinder
-        // {
-        //     mode    inside;
-        //     level   4;
-        // }
-        // middleCylinder
-        // {
-        //     mode    inside;
-        //     level   3;
-        // }
+        
+        innerCylinder
+        {
+            mode    inside;
+            level   2;
+        }
+
+        refinementCylinder
+        {
+            mode    inside;
+            level   4;
+        }
     }
 
 
@@ -216,7 +202,7 @@ castellatedMeshControls
     // section reachable from the locationInMesh is kept.
     // NOTE: This point should never be on a face, always inside a cell, even
     // after refinement.
-    locationInMesh (0.01 -0.5 0.01);
+    locationInMesh (0.01 0.01 0.5);
 
 
     // Whether any faceZones (as specified in the refinementSurfaces)

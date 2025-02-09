@@ -17,31 +17,21 @@ FoamFile
 surfaces
 (
     "helice3.stl"
-    "AMI_c.stl"
+    "innerCylinder.stl"
+    "outerCylinder.stl"
+    "refinementCylinder.stl"
 );
 
-// Configuração das features
-features
-(
-    {
-        file "helice3.eMesh";
-        level 4;
-    }
 
-    {
-        file "AMI_c.eMesh";
-        level 4;
-    }
-);
+// Identify a feature when angle between faces < includedAngle
+includedAngle   150;
 
-extractionMethod extractFromSurface;
-
-extractFromSurfaceCoeffs
+trimFeatures
 {
-    includedAngle 150;
+    // Remove features with fewer than the specified number of edges
+    minElem         10;
 }
 
-writeObj yes;
 
 
 // ************************************************************************* //

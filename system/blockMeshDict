@@ -44,7 +44,7 @@ boundary
         type patch;
         faces
         (
-            (0 1 5 4)  // Frente aberta (entrada de ar)
+            (0 1 2 3)  // Frente aberta (entrada de ar) // 0 1 2 3
         );
     }
 
@@ -53,7 +53,7 @@ boundary
         type patch;
         faces
         (
-            (2 3 7 6)  // Traseira aberta (saída de ar)
+            (4 5 6 7)  // Traseira aberta (saída de ar) // 4 5 6 7
         );
     }
 
@@ -62,7 +62,7 @@ boundary
         type wall;
         faces
         (
-            (0 3 2 1)  // Chão fixo
+            (0 3 4 7)  // Chão fixo // 0 3 4 7
         );
     }
 
@@ -71,9 +71,9 @@ boundary
         type pressureInletOutletVelocity;  // Faces laterais abertas
         faces
         (
-            (1 2 6 5)  // Lateral direita
-            (3 0 4 7)  // Lateral esquerda
-            (4 5 6 7)  // Topo aberto
+            (0 1 4 5)  // Lateral direita // 0 1 4 5
+            (2 3 6 7)  // Lateral esquerda // 2 3 6 7
+            (1 2 5 6)  // Topo aberto // 1 2 5 6
         );
     }
 );

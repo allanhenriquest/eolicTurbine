@@ -2,28 +2,28 @@
   =========                 |
   \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
    \\    /   O peration     | Website:  https://openfoam.org
-    \\  /    A nd           | Version:  12
+    \\  /    A nd           | Version:  9
      \\/     M anipulation  |
 \*---------------------------------------------------------------------------*/
-Build  : 12-6aa359dae696
+Build  : 9-b456138dc4bc
 Exec   : renumberMesh -parallel -noFields -overwrite
-Date   : Jan 09 2025
-Time   : 16:31:52
-Host   : "DESKTOP-POUARR7"
-PID    : 84946
+Date   : Feb 08 2025
+Time   : 23:40:17
+Host   : "ALLAN-DESKTOP"
+PID    : 347386
 I/O    : uncollated
-Case   : /home/allanhenriquest/openfoamcases/eolicTurbine/eolicTurbine
+Case   : /home/allanhenriquest/Documentos/CasosOpenFoam/eolicTurbine
 nProcs : 4
 Slaves : 
 3
 (
-"DESKTOP-POUARR7.84947"
-"DESKTOP-POUARR7.84948"
-"DESKTOP-POUARR7.84949"
+"ALLAN-DESKTOP.347387"
+"ALLAN-DESKTOP.347388"
+"ALLAN-DESKTOP.347389"
 )
 
 Pstream initialised with:
-    floatTransfer      : false
+    floatTransfer      : 0
     nProcsSimpleSum    : 0
     commsType          : nonBlocking
     polling iterations : 0
@@ -32,36 +32,19 @@ fileModificationChecking : Monitoring run-time modified files using timeStampMas
 allowSystemOperations : Allowing user-supplied system call operations
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
-Create time
+[0] 
+[0] 
+[0] --> FOAM FATAL ERROR: 
+[0] renumberMesh: cannot open case directory "/home/allanhenriquest/Documentos/CasosOpenFoam/eolicTurbine/processor0"
+[0] 
+[0] 
+FOAM parallel run exiting
+[0] 
+--------------------------------------------------------------------------
+MPI_ABORT was invoked on rank 0 in communicator MPI COMMUNICATOR 3 SPLIT FROM 0
+with errorcode 1.
 
---> FOAM Warning : 
-    From function Foam::functionObjectList::functionObjectList(const Foam::Time&, bool)
-    in file db/functionObjects/functionObjectList/functionObjectList.C at line 253
-    Both "system/functions" and "system/controlDict/functions" found, the latter will be ignored.
---> FOAM Warning : 
-    From function static Foam::instantList Foam::timeSelector::select0(Foam::Time&, const Foam::argList&)
-    in file db/Time/timeSelector.C at line 269
-    No time specified or available, selecting 'constant'
-Create mesh for time = constant
-
-Mesh size: 39749
-Before renumbering :
-    band           : 10596
-    profile        : 1.02721e+08
-
-Using default renumberMethod.
-
-Selecting renumberMethod CuthillMcKee
-
-
-After renumbering :
-    band           : 952
-    profile        : 2.16698e+07
-
-Writing mesh to "constant"
-
-Renumbering faceSets:
-    wrongFaces
-End
-
-Finalising parallel run
+NOTE: invoking MPI_ABORT causes Open MPI to kill all MPI processes.
+You may or may not see output from other processes, depending on
+exactly when Open MPI kills them.
+--------------------------------------------------------------------------

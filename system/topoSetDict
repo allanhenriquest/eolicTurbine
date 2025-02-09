@@ -1,0 +1,91 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  9                                     |
+|   \\  /    A nd           | Web:      www.OpenFOAM.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      topoSetDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+actions
+(
+    // Criar faceSet para a interface do cilindro (AMI)
+    {
+        name    interfaceAMIInnerFaceSet;
+        type    faceSet;
+        action  new;
+        source  patchToFace;
+        sourceInfo
+        {
+            name    AMI_c;  // Nome do patch que representa a interface do cilindro
+        }
+    }
+    {
+        name    interfaceAMIInnerFaceZone;
+        type    faceZoneSet;
+        action  new;
+        source  setToFaceZone;
+        sourceInfo
+        {
+            faceSet interfaceAMIInnerFaceSet;
+        }
+    }
+
+    // Criar faceSet para a interface da hélice (AMI)
+    {
+        name    interfaceHelixFaceSet;
+        type    faceSet;
+        action  new;
+        source  patchToFace;
+        sourceInfo
+        {
+            name    helice3;  // Nome do patch que representa a interface da hélice
+        }
+    }
+    {
+        name    interfaceHelixFaceZone;
+        type    faceZoneSet;
+        action  new;
+        source  setToFaceZone;
+        sourceInfo
+        {
+            faceSet interfaceHelixFaceSet;
+        }
+    }
+
+    // Criar conjunto de células para a região que contém a hélice (células móveis)
+    {
+        name    movingCellSet;
+        type    cellSet;
+        action  new;
+        source  cylinderToCell;
+
+        sourceInfo
+        {
+            p1      (0.1 -0.02 0);  // Coordenada de início do cilindro
+            p2      (0.1 -0.02 1);  // Coordenada de fim do cilindro
+            radius  0.02;           // Raio do cilindro
+        }
+    }
+
+    // Criar uma zona de células para a região da hélice que se move
+    {
+        name    movingZone;
+        type    cellZoneSet;
+        action  new;
+        source  setToCellZone;
+        sourceInfo
+        {
+            set     movingCellSet;
+        }
+    }
+);
+
+// ************************************************************************* //

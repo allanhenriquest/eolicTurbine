@@ -1,12 +1,13 @@
 /*--------------------------------*- C++ -*----------------------------------*\
-  =========                 |
-  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
-   \\    /   O peration     | Website:  https://openfoam.org
-    \\  /    A nd           | Version:  12
-     \\/     M anipulation  |
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  9                                     |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
 \*---------------------------------------------------------------------------*/
 FoamFile
 {
+    version     2.0;
     format      ascii;
     class       dictionary;
     location    "system";
@@ -16,30 +17,31 @@ FoamFile
 
 ddtSchemes
 {
-    default         backward;
+    default         Euler;
 }
 
 gradSchemes
 {
     default         Gauss linear;
-    grad(U)         cellLimited Gauss linear 1;
 }
 
 divSchemes
 {
     default         none;
-    div(phi,U)      Gauss linearUpwindV grad(U);
+
+    div(phi,U)      Gauss linearUpwind gard(U);
     div(phi,k)      Gauss upwind;
-    div(phi,epsilon) Gauss upwind;
     div(phi,omega)  Gauss upwind;
-    div(phi,R)      Gauss upwind;
-    div(R)          Gauss linear;
-    div(phi,nuTilda) Gauss upwind;
+    div(phi,S)      Gauss limitedLinear01 1;
+
+    div((nuEff*dev2(T(grad(U))))) Gauss linear;
 }
 
 laplacianSchemes
 {
     default         Gauss linear corrected;
+
+    laplacian(diffusivity,cellMotionU) Gauss linear uncorrected;
 }
 
 interpolationSchemes
@@ -52,11 +54,9 @@ snGradSchemes
     default         corrected;
 }
 
-fluxRequired
+wallDist
 {
-    default         no;
-    p;
+    method meshWave;
 }
-
 
 // ************************************************************************* //

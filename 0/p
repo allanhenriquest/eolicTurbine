@@ -1,42 +1,61 @@
 /*--------------------------------*- C++ -*----------------------------------*\
 | =========                 |                                                 |
 | \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
-|  \\    /   O peration     | Version:  v12                                   |
-|   \\  /    A nd           | Web:      www.openfoam.com                      |
+|  \\    /   O peration     | Version:  9                                     |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
 |    \\/     M anipulation  |                                                 |
 \*---------------------------------------------------------------------------*/
-
 FoamFile
 {
-    version     2.0;            // Versão do arquivo OpenFOAM
-    format      ascii;          // Formato do arquivo: ascii ou binary
-    class       volScalarField; // Tipo do campo: escalar volumétrico
-    location    "0.org";            // Localização relativa ao diretório
-    object      p;              // Nome do campo (deve coincidir com o arquivo)
+    version     2.0;
+    format      ascii;
+    class       volScalarField;
+    object      p;
 }
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-// ************************************************************************* //
+dimensions      [0 2 -2 0 0 0 0];
 
-dimensions      [0 2 -2 0 0 0 0]; // Dimensões da pressão: kg/(m.s²)
-internalField   uniform 0;         // Valor inicial uniforme no domínio
+internalField   uniform 0;
 
 boundaryField
 {
-    inlet
+    AMI1
     {
-        type fixedValue;          // Condição de pressão fixa na entrada
-        value uniform 0;
+        type            cyclicAMI;
+        value           uniform 0;
     }
-    outlet
+
+    AMI2
     {
-        type zeroGradient;        // Gradiente zero na saída
+        type            cyclicAMI;
+        value           uniform 0;
     }
-    walls
+
+    inlet 
     {
-        type zeroGradient;        // Gradiente zero nas paredes
+        type            totalPressure;
+        p0              uniform 14;    // Juiz de Fora, 26ºC, Altidude 600
+        value           uniform 0;
     }
-    rotorPatch
+
+    outlet 
     {
-        type zeroGradient;        // Gradiente zero no rotor
+        type            fixedValue;
+        value           uniform 0;
+    }
+
+    ground 
+    {
+        type            zeroGradient;
+        value           uniform 0;
+    }
+
+    openSides
+    {
+        type            zeroGradient;
+        value           uniform 0;
     }
 }
+
+// ************************************************************************* //

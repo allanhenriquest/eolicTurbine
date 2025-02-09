@@ -2,7 +2,7 @@
   =========                 |
   \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
    \\    /   O peration     | Website:  https://openfoam.org
-    \\  /    A nd           | Version:  12
+    \\  /    A nd           | Version:  9
      \\/     M anipulation  |
 \*---------------------------------------------------------------------------*/
 FoamFile
@@ -22,26 +22,61 @@ addLayers       false;
 // Geometry. Definition of all surfaces. All surfaces are of class
 // searchableSurface.
 // Surfaces are used
-// - to specify refinement for any mesh cell intersecting it
+// - to specify refinem,ent for any mesh cell intersecting it
 // - to specify refinement for any mesh cell inside/outside/near
 // - to 'snap' the mesh boundary to the surface
 geometry
 {
+    // innerCylinder
+    // {
+    //     type        triSurfaceMesh;
+    //     file        "AMI_c.stl";
+    //     regions
+    //     {
+    //         innerCylinder
+    //         {
+    //              name       innerCylinder;
+    //         }
+    //     }
+    // }
+    // middleCylinder
+    // {
+    //     type        triSurfaceMesh;
+    //     file        "AMI_c.stl";
+    //     regions
+    //     {
+    //         middleCylinder
+    //         {
+    //              name       middleCylinder;
+    //         }
+    //     }
+    // }
+    AMI_c
+    {
+        type        triSurfaceMesh;
+        file        "AMI_c.stl";
+        regions
+        {
+            AMI_c
+            {
+                 name       AMI_c;
+            }
+        }
+    }
     helice3
     {
         type        triSurfaceMesh;
         file        "helice3.stl";
         regions
         {
-            helice3
-            {
-                 name       helice3;
-            }
+           helice3 
+           {
+                name    helice3
+           }
         }
     }
-
-};
-
+    
+}
 
 
 // Settings for the castellatedMesh generation.
@@ -91,6 +126,11 @@ castellatedMeshControls
     features
     (
         {
+            file        "AMI_c.eMesh";
+            level       4;
+        }
+        
+        {
             file        "helice3.eMesh";
             level       4;
         }
@@ -109,14 +149,31 @@ castellatedMeshControls
 
     refinementSurfaces
     {
-        helice3
+        // innerCylinder
+        // {
+        //     level       (4 4);
+        //     cellZone    innerCylinder;
+        //     faceZone    innerCylinder;
+        //     mode        inside;
+        // }
+        AMI_c
         {
-            level (4 5);
-            cellZone    rotorPatch;
-            faceZone    rotorPatch;
+            level       (4 4);
+            cellZone    AMI_c;
+            faceZone    AMI_c;
             mode        inside;
         }
-       
+        helice3
+        {
+            level       (4 4);
+            regions
+            {
+                helice3
+                {
+                    level (4 5);
+                }
+            }
+        }
     }
 
     // Resolve sharp angles
@@ -138,11 +195,16 @@ castellatedMeshControls
 
     refinementRegions
     {
-        rotorPatch
-        {
-            mode    inside;
-            level   4;
-        }
+        // innerCylinder
+        // {
+        //     mode    inside;
+        //     level   4;
+        // }
+        // middleCylinder
+        // {
+        //     mode    inside;
+        //     level   3;
+        // }
     }
 
 
@@ -151,11 +213,11 @@ castellatedMeshControls
 
     // After refinement patches get added for all refinementSurfaces and
     // all cells intersecting the surfaces get put into these patches. The
-    // section reachable from the insidePoint is kept.
+    // section reachable from the locationInMesh is kept.
     // NOTE: This point should never be on a face, always inside a cell, even
     // after refinement.
-    insidePoint (0.01 -0.1 0.01);
-    locationInMesh (0.01 -0.1 0.01);
+    locationInMesh (0.01 -0.5 0.01);
+
 
     // Whether any faceZones (as specified in the refinementSurfaces)
     // are only on the boundary of corresponding cellZones or also allow
@@ -240,11 +302,7 @@ addLayersControls
 
     // When not to extrude surface. 0 is flat surface, 90 is when two faces
     // are perpendicular
-    featureAngle 60;
-
-    // At non-patched sides allow mesh to slip if extrusion direction makes
-    // angle larger than slipFeatureAngle. Default is 0.5*featureAngle.
-    slipFeatureAngle 15;
+    featureAngle 30;
 
     // Maximum number of snapping relaxation iterations. Should stop
     // before upon reaching a correct mesh.
@@ -299,10 +357,10 @@ meshQualityControls
     //  Set to 180 to disable.
     maxConcave 80;
 
-    //- Minimum cell pyramid volume relative to min bounding box length^3
-    //  Set to a fraction of the smallest cell volume expected.
+    //- Minimum pyramid volume. Is absolute volume of cell pyramid.
+    //  Set to a sensible fraction of the smallest cell volume expected.
     //  Set to very negative number (e.g. -1e30) to disable.
-    minVol -1e30;
+    minVol 1e-13;
 
     //- Minimum quality of the tet formed by the face-centre
     //  and variable base point minimum decomposition triangles and
@@ -313,6 +371,9 @@ meshQualityControls
     //      0 = flat tet
     //      1 = regular tet
     minTetQuality -1; // 1e-30;
+
+    //- Minimum face area. Set to <0 to disable.
+    minArea -1;
 
     //- Minimum face twist. Set to <-1 to disable. dot product of face normal
     //  and face centre triangles normal
@@ -328,11 +389,14 @@ meshQualityControls
     //- minVolRatio (0 -> 1)
     minVolRatio 0.01;
 
+    // must be >0 for Fluent compatibility
+    minTriangleTwist -1;
+
+
     // Advanced
 
     //- Number of error distribution iterations
     nSmoothScale 4;
-
     //- Amount to scale back displacement at error points
     errorReduction 0.75;
 

@@ -2,17 +2,17 @@
   =========                 |
   \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
    \\    /   O peration     | Website:  https://openfoam.org
-    \\  /    A nd           | Version:  12
+    \\  /    A nd           | Version:  9
      \\/     M anipulation  |
 \*---------------------------------------------------------------------------*/
-Build  : 12-6aa359dae696
+Build  : 9-b456138dc4bc
 Exec   : surfaceFeatures
-Date   : Jan 09 2025
-Time   : 16:31:06
-Host   : "DESKTOP-POUARR7"
-PID    : 84648
+Date   : Feb 08 2025
+Time   : 23:40:15
+Host   : "ALLAN-DESKTOP"
+PID    : 347303
 I/O    : uncollated
-Case   : /home/allanhenriquest/openfoamcases/eolicTurbine/eolicTurbine
+Case   : /home/allanhenriquest/Documentos/CasosOpenFoam/eolicTurbine
 nProcs : 1
 sigFpe : Enabling floating point exception trapping (FOAM_SIGFPE).
 fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 10)
@@ -21,57 +21,15 @@ allowSystemOperations : Allowing user-supplied system call operations
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 Create time
 
---> FOAM Warning : 
-    From function Foam::functionObjectList::functionObjectList(const Foam::Time&, bool)
-    in file db/functionObjects/functionObjectList/functionObjectList.C at line 253
-    Both "system/functions" and "system/controlDict/functions" found, the latter will be ignored.
-Reading "surfaceFeaturesDict"
-
-Surface            : "helice3.stl"
 
 
-Feature line extraction is only valid on closed manifold surfaces.
-Statistics:
-Triangles    : 108942
-Vertices     : 54463
-Bounding Box : (-0.192272 -0.045 -0.218) (0.190179 -0 0.115024)
+--> FOAM FATAL IO ERROR: 
+Cannot open include file "/home/allanhenriquest/Documentos/CasosOpenFoam/eolicTurbine/system/surfaces" while reading dictionary "/home/allanhenriquest/Documentos/CasosOpenFoam/eolicTurbine/system/controlDict/functions"
 
+file: /home/allanhenriquest/Documentos/CasosOpenFoam/eolicTurbine/system/controlDict at line 39.
 
-Constructing feature set from included angle 2.61799
-Selecting edges purely based on geometric tests: no
-Removing features of length < -4.5036e+15
-Removing features with number of edges < 10
+    From function static bool Foam::functionEntries::includeEntry::execute(Foam::dictionary&, Foam::Istream&)
+    in file db/dictionary/functionEntries/includeEntry/includeEntry.C at line 169.
 
-Initial feature set:
-    feature points : 24
-    feature edges  : 3197
-    of which
-        region edges   : 0
-        external edges : 2645
-        internal edges : 552
-
-
-Final feature set:
-points      : 3197
-edges       : 3197
-boundingBox : (-0.192272 -0.03 -0.218) (0.190179 -0 0.115024)
-point classification :
-    convex feature points          :        3
-    concave feature points         :        6
-    mixed feature points           :       15
-    other (non-feature) points     :     3173
-edge classification :
-    external (convex angle) edges  :     2646
-    internal (concave angle) edges :      551
-    flat region edges              :        0
-    open edges                     :        0
-    multiply connected edges       :        0
-
-Writing extendedFeatureEdgeMesh to "constant/extendedFeatureEdgeMesh/helice3.extendedFeatureEdgeMesh"
-
-Writing featureEdgeMesh to "constant/triSurface/helice3.eMesh"
-
-ExecutionTime = 1.18 s  ClockTime = 2 s
-
-End
+FOAM exiting
 

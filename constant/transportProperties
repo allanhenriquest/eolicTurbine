@@ -16,6 +16,6 @@ FoamFile
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 nu              1.5e-05;  /* Viscosidade cinemática do ar (m²/s)*/
-rho             1.225;    /* Densidade do ar (kg/m³)*/
+rho             1.12;    /* Densidade do ar (kg/m³)*/
 
 /*************************************************************************/

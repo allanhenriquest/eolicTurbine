@@ -2,7 +2,7 @@
   =========                 |
   \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
    \\    /   O peration     | Website:  https://openfoam.org
-    \\  /    A nd           | Version:  12
+    \\  /    A nd           | Version:  9
      \\/     M anipulation  |
 \*---------------------------------------------------------------------------*/
 FoamFile
@@ -14,15 +14,14 @@ FoamFile
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-numberOfSubdomains 4;  /* Número de Processadores */ 
+numberOfSubdomains 4;
 
-method          hierarchical;
+method          simple;
 
-hierarchicalCoeffs
+simpleCoeffs
 {
-    n               (2 2 1);   /* Multiplicação deve ser igual ao número de processadores */
-    order           xyz;
+    n               (2 2 1);
+    delta           0.001;
 }
-
 
 /*************************************************************************/

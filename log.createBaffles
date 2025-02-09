@@ -2,28 +2,28 @@
   =========                 |
   \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
    \\    /   O peration     | Website:  https://openfoam.org
-    \\  /    A nd           | Version:  12
+    \\  /    A nd           | Version:  9
      \\/     M anipulation  |
 \*---------------------------------------------------------------------------*/
-Build  : 12-6aa359dae696
+Build  : 9-b456138dc4bc
 Exec   : createBaffles -parallel -overwrite
-Date   : Jan 09 2025
-Time   : 16:31:50
-Host   : "DESKTOP-POUARR7"
-PID    : 84888
+Date   : Feb 08 2025
+Time   : 23:40:16
+Host   : "ALLAN-DESKTOP"
+PID    : 347332
 I/O    : uncollated
-Case   : /home/allanhenriquest/openfoamcases/eolicTurbine/eolicTurbine
+Case   : /home/allanhenriquest/Documentos/CasosOpenFoam/eolicTurbine
 nProcs : 4
 Slaves : 
 3
 (
-"DESKTOP-POUARR7.84889"
-"DESKTOP-POUARR7.84890"
-"DESKTOP-POUARR7.84891"
+"ALLAN-DESKTOP.347333"
+"ALLAN-DESKTOP.347334"
+"ALLAN-DESKTOP.347335"
 )
 
 Pstream initialised with:
-    floatTransfer      : false
+    floatTransfer      : 0
     nProcsSimpleSum    : 0
     commsType          : nonBlocking
     polling iterations : 0
@@ -32,23 +32,11 @@ fileModificationChecking : Monitoring run-time modified files using timeStampMas
 allowSystemOperations : Allowing user-supplied system call operations
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
-Create time
-
---> FOAM Warning : 
-    From function Foam::functionObjectList::functionObjectList(const Foam::Time&, bool)
-    in file db/functionObjects/functionObjectList/functionObjectList.C at line 253
-    Both "system/functions" and "system/controlDict/functions" found, the latter will be ignored.
-Create mesh for time = 0
-
-Reading "createBafflesDict"
-
 [0] 
 [0] 
 [0] --> FOAM FATAL ERROR: 
-[0] cannot find file "/home/allanhenriquest/openfoamcases/eolicTurbine/eolicTurbine/system/createBafflesDict"
+[0] createBaffles: cannot open case directory "/home/allanhenriquest/Documentos/CasosOpenFoam/eolicTurbine/processor0"
 [0] 
-[0]     From function virtual Foam::autoPtr<Foam::ISstream> Foam::fileOperations::uncollatedFileOperation::readStream(Foam::regIOobject&, const Foam::fileName&, const Foam::word&, bool) const
-[0]     in file global/fileOperations/uncollatedFileOperation/uncollatedFileOperation.C at line 539.
 [0] 
 FOAM parallel run exiting
 [0] 

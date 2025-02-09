@@ -7,33 +7,39 @@
 \*---------------------------------------------------------------------------*/
 FoamFile
 {
-    format      ascii;
+    format      binary;
     class       polyBoundaryMesh;
     location    "constant/polyMesh";
     object      boundary;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-3
+4
 (
-    walls
-    {
-        type            wall;
-        inGroups        List<word> 1(wall);
-        nFaces          960;
-        startFace       8016;
-    }
     inlet
     {
         type            patch;
-        nFaces          144;
-        startFace       8976;
+        nFaces          5000;
+        startFace       737500;
     }
     outlet
     {
         type            patch;
-        nFaces          144;
-        startFace       9120;
+        nFaces          5000;
+        startFace       742500;
+    }
+    ground
+    {
+        type            wall;
+        inGroups        List<word> 1(wall);
+        nFaces          2500;
+        startFace       747500;
+    }
+    openSides
+    {
+        type            pressureInletOutletVelocity;
+        nFaces          12500;
+        startFace       750000;
     }
 )
 

@@ -18,19 +18,19 @@ convertToMeters 1;
 
 vertices
 (
-    (-0.15  0.00  0.0)   // 0 (chão frontal esquerdo)
-    ( 0.15  0.00  0.0)   // 1 (chão frontal direito)
-    ( 0.15  0.30  0.0)   // 2 (chão traseiro direito)
-    (-0.15  0.30  0.0)   // 3 (chão traseiro esquerdo)
-    (-0.15  0.00  1.0)   // 4 (teto frontal esquerdo)
-    ( 0.15  0.00  1.0)   // 5 (teto frontal direito)
-    ( 0.15  0.30  1.0)   // 6 (teto traseiro direito)
-    (-0.15  0.30  1.0)   // 7 (teto traseiro esquerdo)
+    (-0.26  -0.26  -0.011)   // 0 (chão frontal esquerdo)
+    ( 0.26  -0.26  -0.011)   // 1 (chão frontal direito)
+    ( 0.26  0.26  -0.011)   // 2 (chão traseiro direito)
+    (-0.26  0.26  -0.011)   // 3 (chão traseiro esquerdo)
+    (-0.26  -0.26  1.01)   // 4 (teto frontal esquerdo)
+    ( 0.26  -0.26  1.01)   // 5 (teto frontal direito)
+    ( 0.26  0.26  1.01)   // 6 (teto traseiro direito)
+    (-0.26  0.26  1.01)   // 7 (teto traseiro esquerdo)
 );
 
 blocks
 (
-    hex (0 1 2 3 4 5 6 7) (30 30 100) simpleGrading (1 1 1)
+    hex (0 1 2 3 4 5 6 7) (50 50 100) simpleGrading (1 1 1)
 );
 
 edges

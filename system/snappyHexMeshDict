@@ -71,7 +71,7 @@ geometry
         {
            helice3 
            {
-                name    helice3
+                name    helice3;
            }
         }
     }
